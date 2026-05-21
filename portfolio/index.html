@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Engenheiro Informático | Sebastião da Cruz Miranda</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+
+<style>
+/* ── Redução de 30% na imagem de perfil ── */
+.about-img {
+  width: 252px !important;
+  height: 252px !important;
+  min-width: unset !important;
+  min-height: unset !important;
+}
+.about-img img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center top !important;
+}
+.about-img-wrap {
+  align-items: center !important;
+}
+
+/* ── Galeria: linha única com slideshow 250×200px ── */
+#galeria .gallery-grid {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  overflow: hidden !important;
+  gap: 0 !important;
+  width: 100% !important;
+  position: relative !important;
+  align-items: center !important;
+}
+#galeria .gallery-slideshow-track {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  gap: 16px !important;
+  transition: transform 0.6s cubic-bezier(0.4,0,0.2,1) !important;
+  will-change: transform !important;
+  padding: 8px 0 !important;
+}
+#galeria .gallery-item {
+  flex: 0 0 250px !important;
+  width: 250px !important;
+  height: 200px !important;
+  overflow: visible !important;
+  padding: 0 !important;
+  border-radius: 14px !important;
+  border: 1.5px solid rgba(212,168,67,0.3) !important;
+  background: rgba(18,18,18,0.92) !important;
+  cursor: pointer !important;
+  transition: transform 0.28s, box-shadow 0.28s !important;
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+#galeria .gallery-item:hover {
+  transform: translateY(-8px) scale(1.02) !important;
+  box-shadow: 0 12px 36px rgba(212,168,67,0.35) !important;
+  z-index: 10 !important;
+}
+#galeria .gallery-img {
+  width: 250px !important;
+  height: 90px !important;
+  flex-shrink: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  background: linear-gradient(135deg, rgba(212,168,67,0.10) 0%, rgba(212,168,67,0.04) 100%) !important;
+  border-bottom: 1px solid rgba(212,168,67,0.18) !important;
+  border-radius: 14px 14px 0 0 !important;
+}
+#galeria .gallery-img svg {
+  width: 52px !important;
+  height: 52px !important;
+  color: #d4a843 !important;
+  opacity: 0.9 !important;
+}
+#galeria .gallery-desc-area {
+  flex: 1 !important;
+  padding: 10px 12px 0 12px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+  overflow: hidden !important;
+}
+#galeria .gallery-desc-title {
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  color: #d4a843 !important;
+  line-height: 1.2 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  letter-spacing: 0.01em !important;
+}
+#galeria .gallery-desc-text {
+  font-size: 0.62rem !important;
+  color: rgba(255,255,255,0.58) !important;
+  line-height: 1.45 !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+#galeria .gallery-features {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 3px !important;
+  margin-top: 4px !important;
+}
+#galeria .gallery-feature-tag {
+  font-size: 0.52rem !important;
+  background: rgba(212,168,67,0.12) !important;
+  color: rgba(212,168,67,0.85) !important;
+  border: 1px solid rgba(212,168,67,0.22) !important;
+  border-radius: 20px !important;
+  padding: 1px 6px !important;
+  white-space: nowrap !important;
+}
+#galeria .gallery-footer {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 6px 12px 8px !important;
+  margin-top: auto !important;
+}
+#galeria .gallery-desc-year {
+  font-size: 0.58rem !important;
+  color: rgba(212,168,67,0.45) !important;
+}
+#galeria .gallery-link {
+  font-size: 0.58rem !important;
+  color: #d4a843 !important;
+  text-decoration: none !important;
+  border: 1px solid rgba(212,168,67,0.4) !important;
+  border-radius: 20px !important;
+  padding: 2px 8px !important;
+  transition: background 0.2s !important;
+  white-space: nowrap !important;
+}
+#galeria .gallery-link:hover {
+  background: rgba(212,168,67,0.18) !important;
+}
+#galeria .gallery-overlay {
+  display: none !important;
+}
+.gallery-slideshow-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+}
+.gallery-slide-btn {
+  flex-shrink: 0;
+  background: rgba(212,168,67,0.15);
+  border: 1px solid rgba(212,168,67,0.35);
+  color: #d4a843;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  z-index: 2;
+  transition: background 0.2s;
+}
+.gallery-slide-btn:hover { background: rgba(212,168,67,0.35); }
+
+/* ── Animação do hero-subtitle ── */
+@keyframes heroTextSlide {
+  0%   { opacity:0; transform: translateY(18px); }
+  12%  { opacity:1; transform: translateY(0); }
+  85%  { opacity:1; transform: translateY(0); }
+  100% { opacity:0; transform: translateY(-18px); }
+}
+@keyframes heroNamePulse {
+  0%, 100% { text-shadow: 0 0 0px rgba(212,168,67,0); }
+  50%       { text-shadow: 0 0 18px rgba(212,168,67,0.55); }
+}
+.hero-name {
+  animation: heroNamePulse 3s ease-in-out infinite !important;
+}
+.hero-subtitle {
+  animation: heroTextSlide 5s ease-in-out infinite !important;
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-logo">Sejas<span style="color:var(--text-muted);font-weight:300;">·</span>Bem Vindo</div>
+  <div class="nav-links">
+    <a href="#inicio" class="active" data-i18n="nav_inicio">Início</a>
+    <a href="#galeria" data-i18n="nav_galeria">Galeria</a>
+    <a href="#projectos" data-i18n="nav_projectos">Projectos</a>
+    <a href="#sobre" data-i18n="nav_sobre">Sobre Mim</a>
+    <a href="#curriculo" data-i18n="nav_curriculo">Currículo</a>
+    <a href="#chat" data-i18n="nav_chat">Chat</a>
+    <div class="lang-selector">
+      <button class="lang-btn" onclick="toggleLang()">
+        🌐 <span id="currentLang">PT</span> ▾
+      </button>
+      <div class="lang-dropdown" id="langDropdown">
+        <button onclick="setLang('pt')" class="selected">🇦🇴 Português (Angola)</button>
+        <button onclick="setLang('kik')">Kikongo</button>
+        <button onclick="setLang('kim')">Kimbundu</button>
+        <button onclick="setLang('umb')">Umbundu</button>
+        <button onclick="setLang('chy')">Chokwe</button>
+        <button onclick="setLang('lun')">Luvale</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ── SECTIONS ── -->
+<!-- pages/hero.html -->
+<style>
+/* ── Nitidez e altura reduzida 40% no slideshow ── */
+.hero-slideshow{position:absolute;inset:0;z-index:0;overflow:hidden;}
+.hero-slideshow .slide{
+  position:absolute;inset:0;
+  background-size:cover;
+  background-position:center top;
+  opacity:0;
+  transition:opacity 1.2s ease-in-out;
+  image-rendering:-webkit-optimize-contrast;
+  image-rendering:crisp-edges;
+  /* Nitidez máxima — contraste, saturação e aceleração GPU */
+  filter: contrast(1.18) saturate(1.2) brightness(1.04);
+  will-change: opacity;
+  backface-visibility:hidden;
+  transform:translateZ(0);
+  -webkit-transform:translateZ(0);
+}
+.hero-slideshow .slide.active{opacity:1;}
+.hero-slideshow::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.72) 0%,rgba(0,0,0,0.42) 55%,rgba(0,0,0,0.18) 100%);z-index:1;}
+.hero-dots{position:absolute;bottom:1.8rem;left:50%;transform:translateX(-50%);display:flex;gap:0.5rem;z-index:10;}
+.hero-dot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,0.3);cursor:pointer;transition:background 0.3s,transform 0.3s;border:none;padding:0;}
+.hero-dot.active{background:var(--gold-light,#d4a843);transform:scale(1.35);}
+.hero-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:10;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;backdrop-filter:blur(4px);transition:background 0.2s;}
+.hero-arrow:hover{background:rgba(255,255,255,0.22);}
+.hero-arrow.prev{left:1rem;}
+.hero-arrow.next{right:1rem;}
+/* Altura aumentada +20% adicional: 84vh → 100vh */
+#inicio{position:relative;overflow:hidden;height:100vh !important;min-height:560px !important;}
+#inicio .hero-bg{display:none;}
+#inicio .hero-content{position:relative;z-index:5;}
+#inicio .hero-lines{z-index:2;}
+</style>
+
+<section id="inicio">
+  <div class="hero-slideshow" id="heroSlideshow">
+    <div class="slide active" style="background-image:url('images/perfil.jpeg');"></div>
+    <div class="slide" style="background-image:url('images/img2.jpeg');background-position:center center;"></div>
+    <div class="slide" style="background-image:url('images/img3.jpeg');"></div>
+    <div class="slide" style="background-image:url('images/img4.jpeg');"></div>
+    <div class="slide" style="background-image:url('images/img1.png');background-position:center top;"></div>
+  </div>
+  <button class="hero-arrow prev" onclick="heroSlide(-1)">&#8249;</button>
+  <button class="hero-arrow next" onclick="heroSlide(1)">&#8250;</button>
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-content">
+    <div class="ao-flag-accent"><span class="ao-red"></span><span class="ao-black"></span></div>
+    <div class="hero-tag" data-i18n="hero_tag">Engenheiro Informático · Sebastião da Cruz Miranda</div>
+    <h1 class="hero-name" data-i18n="hero_name">Sebastião <span>Miranda</span></h1>
+    <div class="hero-subtitle" id="heroSubtitleAnim" style="min-height:3.5em;overflow:hidden;position:relative;">
+      <span class="hero-subtitle-span" style="display:block;position:absolute;width:100%;"></span>
+    </div>
+    <script>
+    (function(){
+      var phrases = [
+        "Engenheiro de Informático & Analista de Software e Analista de Dados, Programador.",
+        "Transformando visões em experiências digitais excepcionais.",
+        "Especialista em Laravel · Angular · PHP · Python · C#",
+        "Mais de 6 anos de experiência em Angola."
+      ];
+      var el = document.getElementById('heroSubtitleAnim').querySelector('.hero-subtitle-span');
+      var i = 0;
+      function show(){
+        el.style.transition = 'none';
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.textContent = phrases[i];
+        requestAnimationFrame(function(){
+          requestAnimationFrame(function(){
+            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+          });
+        });
+        setTimeout(function(){
+          el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(-20px)';
+          i = (i + 1) % phrases.length;
+          setTimeout(show, 700);
+        }, 3200);
+      }
+      show();
+    })();
+    </script>
+    <div class="hero-cta">
+      <a href="#projectos" class="btn-primary" data-i18n="hero_cta1">Ver Projectos</a>
+      <a href="#contato" class="btn-outline" data-i18n="hero_cta2">Contactar</a>
+    </div>
+  </div>
+  <div class="hero-dots" id="heroDots">
+    <button class="hero-dot active" onclick="heroGoTo(0)"></button>
+    <button class="hero-dot" onclick="heroGoTo(1)"></button>
+    <button class="hero-dot" onclick="heroGoTo(2)"></button>
+    <button class="hero-dot" onclick="heroGoTo(3)"></button>
+    <button class="hero-dot" onclick="heroGoTo(4)"></button>
+  </div>
+</section>
+<script>
+(function(){
+  let cur=0,timer=null;
+  const slides=document.querySelectorAll('#heroSlideshow .slide');
+  const dots=document.querySelectorAll('#heroDots .hero-dot');
+  function goTo(n){
+    slides[cur].classList.remove('active');dots[cur].classList.remove('active');
+    cur=(n+slides.length)%slides.length;
+    slides[cur].classList.add('active');dots[cur].classList.add('active');
+  }
+  function startAuto(){clearInterval(timer);timer=setInterval(()=>goTo(cur+1),4500);}
+  window.heroSlide=function(d){goTo(cur+d);startAuto();};
+  window.heroGoTo=function(n){goTo(n);startAuto();};
+  startAuto();
+})();
+</script>
+
+<!-- pages/galeria.html -->
+<section id="galeria">
+  <div class="gallery-intro">
+    <div class="section-label" data-i18n="gal_label">Galeria</div>
+    <h2 class="section-title" data-i18n="gal_title">Trabalhos em <span>Destaque</span></h2>
+    <div class="section-sep"></div>
+    <p data-i18n="gal_desc">Uma curadoria dos meus trabalhos mais significativos, reflectindo a essência criativa e técnica de cada projecto.</p>
+  </div>
+  <div class="gallery-grid">
+    <button class="gallery-slide-btn" id="galPrev" onclick="galSlide(-1)">&#8249;</button>
+    <div style="flex:1;overflow:hidden;">
+      <div class="gallery-slideshow-track" id="galTrack">
+    <div class="gallery-item gal-1">
+      <div class="gallery-img">
+        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+          <rect x="8" y="14" width="64" height="42" rx="5" fill="none" stroke="currentColor" stroke-width="3"/>
+          <line x1="8" y1="26" x2="72" y2="26" stroke="currentColor" stroke-width="2.5"/>
+          <circle cx="16" cy="20" r="2" fill="currentColor"/>
+          <circle cx="24" cy="20" r="2" fill="currentColor"/>
+          <circle cx="32" cy="20" r="2" fill="currentColor"/>
+          <polygon points="30,35 30,50 50,42.5" fill="currentColor" opacity="0.85"/>
+          <rect x="28" y="56" width="24" height="4" rx="2" fill="currentColor" opacity="0.6"/>
+          <line x1="40" y1="60" x2="40" y2="66" stroke="currentColor" stroke-width="2.5"/>
+          <rect x="24" y="66" width="32" height="4" rx="2" fill="currentColor" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="gallery-desc-area">
+        <div class="gallery-desc-title">Plataforma de EAD</div>
+        <div class="gallery-desc-text">Ensino à distância com vídeos, avaliações e acompanhamento de progresso.</div>
+        <div class="gallery-features"><span class="gallery-feature-tag">Vídeo Aulas</span><span class="gallery-feature-tag">Avaliações</span><span class="gallery-feature-tag">Progresso</span><span class="gallery-feature-tag">Certificados</span></div>
+      </div>
+      <div class="gallery-footer">
+        <span class="gallery-desc-year">2024</span>
+        <a class="gallery-link" href="#projectos">Ver projecto →</a>
+      </div>
+    </div>
+    <div class="gallery-item gal-2">
+      <div class="gallery-img">
+        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+          <path d="M10 18h8l10 28h32l8-20H24" stroke="currentColor" stroke-width="3" fill="none" stroke-linejoin="round"/>
+          <circle cx="34" cy="52" r="4" fill="currentColor"/>
+          <circle cx="54" cy="52" r="4" fill="currentColor"/>
+          <polyline points="18,26 24,46 56,46 62,26" stroke="currentColor" stroke-width="2" fill="none"/>
+          <line x1="32" y1="30" x2="32" y2="42" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+          <line x1="42" y1="30" x2="42" y2="42" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+          <line x1="52" y1="30" x2="52" y2="42" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+        </svg>
+      </div>
+      <div class="gallery-desc-area">
+        <div class="gallery-desc-title">E-Commerce</div>
+        <div class="gallery-desc-text">Loja online com catálogo, carrinho, pagamentos e gestão de encomendas.</div>
+        <div class="gallery-features"><span class="gallery-feature-tag">Catálogo</span><span class="gallery-feature-tag">Carrinho</span><span class="gallery-feature-tag">Pagamentos</span><span class="gallery-feature-tag">Relatórios</span></div>
+      </div>
+      <div class="gallery-footer">
+        <span class="gallery-desc-year">2024</span>
+        <a class="gallery-link" href="#projectos">Ver projecto →</a>
+      </div>
+    </div>
+    <div class="gallery-item gal-3">
+      <div class="gallery-img">
+        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+          <rect x="6" y="34" width="44" height="22" rx="3" fill="none" stroke="currentColor" stroke-width="3"/>
+          <path d="M50 40h12l8 10v6H50V40z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+          <circle cx="18" cy="60" r="5" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <circle cx="18" cy="60" r="2" fill="currentColor"/>
+          <circle cx="62" cy="60" r="5" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <circle cx="62" cy="60" r="2" fill="currentColor"/>
+          <line x1="14" y1="34" x2="14" y2="24" stroke="currentColor" stroke-width="2" opacity="0.5"/>
+          <line x1="10" y1="24" x2="36" y2="24" stroke="currentColor" stroke-width="2" opacity="0.5"/>
+          <line x1="36" y1="24" x2="36" y2="34" stroke="currentColor" stroke-width="2" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="gallery-desc-area">
+        <div class="gallery-desc-title">Vendas Transportadoras</div>
+        <div class="gallery-desc-text">Gestão de frota e rotas com rastreio, vendas e emissão de documentos.</div>
+        <div class="gallery-features"><span class="gallery-feature-tag">Frota</span><span class="gallery-feature-tag">Rotas</span><span class="gallery-feature-tag">Rastreio</span><span class="gallery-feature-tag">Facturas</span></div>
+      </div>
+      <div class="gallery-footer">
+        <span class="gallery-desc-year">2023</span>
+        <a class="gallery-link" href="#projectos">Ver projecto →</a>
+      </div>
+    </div>
+    <div class="gallery-item gal-4">
+      <div class="gallery-img">
+        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+          <polygon points="40,10 70,28 70,52 40,70 10,52 10,28" fill="none" stroke="currentColor" stroke-width="3"/>
+          <text x="40" y="46" text-anchor="middle" font-size="22" fill="currentColor" font-family="serif" font-weight="bold">A</text>
+          <line x1="10" y1="28" x2="70" y2="28" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
+          <line x1="10" y1="52" x2="70" y2="52" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
+          <line x1="40" y1="10" x2="40" y2="70" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
+        </svg>
+      </div>
+      <div class="gallery-desc-area">
+        <div class="gallery-desc-title">Sistemas Escolares</div>
+        <div class="gallery-desc-text">Gestão académica com matrículas, notas, horários e comunicação escola-família.</div>
+        <div class="gallery-features"><span class="gallery-feature-tag">Matrículas</span><span class="gallery-feature-tag">Notas</span><span class="gallery-feature-tag">Horários</span><span class="gallery-feature-tag">Mensagens</span></div>
+      </div>
+      <div class="gallery-footer">
+        <span class="gallery-desc-year">2023</span>
+        <a class="gallery-link" href="#projectos">Ver projecto →</a>
+      </div>
+    </div>
+    <div class="gallery-item gal-5">
+      <div class="gallery-img">
+        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+          <rect x="12" y="20" width="56" height="48" rx="4" fill="none" stroke="currentColor" stroke-width="3"/>
+          <rect x="26" y="10" width="28" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <line x1="40" y1="32" x2="40" y2="50" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+          <line x1="31" y1="41" x2="49" y2="41" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+          <line x1="20" y1="58" x2="60" y2="58" stroke="currentColor" stroke-width="2" opacity="0.45"/>
+          <line x1="20" y1="64" x2="50" y2="64" stroke="currentColor" stroke-width="2" opacity="0.35"/>
+        </svg>
+      </div>
+      <div class="gallery-desc-area">
+        <div class="gallery-desc-title">Sistemas Hospitalares</div>
+        <div class="gallery-desc-text">Plataforma clínica com fichas de pacientes, consultas, internamentos e farmácia.</div>
+        <div class="gallery-features"><span class="gallery-feature-tag">Fichas</span><span class="gallery-feature-tag">Consultas</span><span class="gallery-feature-tag">Internamentos</span><span class="gallery-feature-tag">Farmácia</span></div>
+      </div>
+      <div class="gallery-footer">
+        <span class="gallery-desc-year">2024</span>
+        <a class="gallery-link" href="#projectos">Ver projecto →</a>
+      </div>
+    </div>
+    <div class="gallery-item gal-6">
+      <div class="gallery-img">
+        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+          <rect x="16" y="10" width="48" height="60" rx="4" fill="none" stroke="currentColor" stroke-width="3"/>
+          <line x1="26" y1="26" x2="54" y2="26" stroke="currentColor" stroke-width="2.2"/>
+          <line x1="26" y1="35" x2="54" y2="35" stroke="currentColor" stroke-width="2.2"/>
+          <line x1="26" y1="44" x2="46" y2="44" stroke="currentColor" stroke-width="2.2"/>
+          <path d="M44 56 L50 50 L60 62 L54 68 Z" fill="currentColor" opacity="0.75"/>
+          <line x1="49" y1="51" x2="55" y2="57" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
+          <rect x="16" y="10" width="48" height="10" rx="4" fill="currentColor" opacity="0.15"/>
+          <line x1="26" y1="16" x2="42" y2="16" stroke="currentColor" stroke-width="2" opacity="0.7"/>
+        </svg>
+      </div>
+      <div class="gallery-desc-area">
+        <div class="gallery-desc-title">Gestão de Contratos</div>
+        <div class="gallery-desc-text">Sistema digital de elaboração, aprovação e acompanhamento de contratos.</div>
+        <div class="gallery-features"><span class="gallery-feature-tag">Elaboração</span><span class="gallery-feature-tag">Aprovação</span><span class="gallery-feature-tag">Assinatura</span><span class="gallery-feature-tag">Arquivo</span></div>
+      </div>
+      <div class="gallery-footer">
+        <span class="gallery-desc-year">2024</span>
+        <a class="gallery-link" href="#projectos">Ver projecto →</a>
+      </div>
+    </div>
+      </div><!-- /galTrack -->
+    </div>
+    <button class="gallery-slide-btn" id="galNext" onclick="galSlide(1)">&#8250;</button>
+  </div>
+</section>
+<script>
+(function(){
+  const track = document.getElementById('galTrack');
+  const items = track ? track.querySelectorAll('.gallery-item') : [];
+  const visible = Math.floor((track && track.parentElement ? track.parentElement.offsetWidth : 400) / 266) || 4;
+  let idx = 0;
+  const max = Math.max(0, items.length - visible);
+  function update(){
+    const step = 266;
+    track.style.transform = 'translateX(-' + (idx * step) + 'px)';
+  }
+  window.galSlide = function(dir){
+    idx = Math.max(0, Math.min(max, idx + dir));
+    update();
+    resetAuto();
+  };
+  let autoT;
+  function resetAuto(){
+    clearInterval(autoT);
+    autoT = setInterval(function(){ idx = idx >= max ? 0 : idx + 1; update(); }, 2000);
+  }
+  resetAuto();
+})();
+</script>
+
+<!-- pages/projectos.html -->
+<section id="projectos">
+  <div class="projects-header">
+    <div>
+      <div class="section-label" data-i18n="proj_label">Projectos</div>
+      <h2 class="section-title" data-i18n="proj_title">Casos de <span>Sucesso</span></h2>
+    </div>
+    <a href="#contato" class="btn-outline" style="font-size:0.78rem;" data-i18n="proj_all">Ver todos →</a>
+  </div>
+  <div class="section-sep"></div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-thumb proj-1">▲</div>
+      <div class="project-body">
+        <div class="project-tag" data-i18n="proj1_tag">Fintech · Angola</div>
+        <div class="project-name" data-i18n="proj1_name">Plataforma Bancária Digital</div>
+        <p class="project-desc" data-i18n="proj1_desc">Sistema completo de banca digital para o mercado angolano, com integração de pagamentos em Kwanza e multicanalidade.</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb proj-2">◆</div>
+      <div class="project-body">
+        <div class="project-tag" data-i18n="proj2_tag">E-Gov · Luanda</div>
+        <div class="project-name" data-i18n="proj2_name">Portal de Serviços Públicos</div>
+        <p class="project-desc" data-i18n="proj2_desc">Portal integrado para acesso a serviços governamentais, com validação de BI e autenticação segura dos cidadãos angolanos.</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb proj-3">●</div>
+      <div class="project-body">
+        <div class="project-tag" data-i18n="proj3_tag">Saúde · Nacional</div>
+        <div class="project-name" data-i18n="proj3_name">Sistema de Gestão Clínica</div>
+        <p class="project-desc" data-i18n="proj3_desc">Plataforma de gestão clínica para hospitais e clínicas em Angola, com ficha do paciente e agendamento online.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- pages/sobre.html -->
+<section id="sobre">
+  <div class="about-grid">
+    <div class="about-img-wrap">
+      <div class="about-img" style="background:transparent !important;font-size:0 !important;padding:0 !important;overflow:hidden !important;border-radius:50% !important;display:flex !important;align-items:center !important;justify-content:center !important;width:252px !important;height:252px !important;">
+        <img src="images/perfil.jpeg"
+             alt="Sebastião Miranda"
+             style="width:100% !important;height:100% !important;object-fit:cover !important;object-position:center top !important;border-radius:50% !important;display:block !important;z-index:2 !important;position:relative !important;"/>
+        <div class="about-img-frame" style="position:absolute;z-index:3;pointer-events:none;"></div>
+      </div>
+      <div class="about-stats">
+        <div class="stat">
+          <div class="stat-num">6+</div>
+          <div class="stat-label" data-i18n="stat1">Anos Exp.</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">30+</div>
+          <div class="stat-label" data-i18n="stat2">Projectos</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">10+</div>
+          <div class="stat-label" data-i18n="stat3">Clientes</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">2</div>
+          <div class="stat-label" data-i18n="stat4">Instituições</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-text">
+      <div class="section-label" data-i18n="about_label">Sobre Mim</div>
+      <h2 class="section-title" data-i18n="about_title">Olá, Sou <span>Sebastião</span></h2>
+      <div class="section-sep"></div>
+      <div class="narrator-bar" id="narratorBar" onclick="toggleNarrator()">
+        <div class="narrator-icon">🔊</div>
+        <div class="narrator-info">
+          <strong data-i18n="narr_title">Ouvir a minha história</strong>
+          <span data-i18n="narr_sub">Narração automática disponível</span>
+        </div>
+        <div class="narrator-waves">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+      <p data-i18n="about_p1">
+        Sou um profissional motivado e apaixonado por tecnologia e análise de dados, sempre em busca de aprimoramento contínuo e inovação. Com uma sólida formação em Engenharia Informática, possuo habilidades técnicas avançadas que me permitem transformar dados em decisões estratégicas.
+      </p>
+      <p data-i18n="about_p2">
+        Com mais de 6 anos de experiência como Analista de Sistema & Programador, especializei-me em Laravel, Angular, PHP, Python e C#, colaborando com empresas públicas e privadas em Angola.
+      </p>
+      <div class="skills-list">
+        <span class="skill-tag">Laravel</span>
+        <span class="skill-tag">Angular</span>
+        <span class="skill-tag">PHP</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">C#</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">Power BI</span>
+        <span class="skill-tag">WordPress</span>
+        <span class="skill-tag">Jira</span>
+      </div>
+      <a href="#curriculo" class="btn-primary" data-i18n="about_cta">Ver Currículo</a>
+    </div>
+  </div>
+</section>
+
+<!-- pages/curriculo.html -->
+<section id="curriculo">
+  <div class="section-label" data-i18n="cv_label">Currículo</div>
+  <h2 class="section-title" data-i18n="cv_title">Experiência <span>Profissional</span></h2>
+  <div class="section-sep"></div>
+  <div class="cv-layout">
+    <!-- SIDEBAR -->
+    <div class="cv-sidebar">
+      <div class="cv-profile-card">
+        <div class="cv-avatar">SM</div>
+        <div class="cv-name">Sebastião Miranda</div>
+        <div class="cv-role">Analista de Sistema & Programador</div>
+        <div class="cv-contact-list">
+          <div class="cv-contact-item">
+            <div class="cv-contact-icon">📱</div>
+            <span>+244 935 457 261</span>
+          </div>
+          <div class="cv-contact-item">
+            <div class="cv-contact-icon">✉️</div>
+            <span>sebastiaodacruzmiranda@gmail.com</span>
+          </div>
+          <div class="cv-contact-item">
+            <div class="cv-contact-icon">📍</div>
+            <span>Luanda, Angola</span>
+          </div>
+          <div class="cv-contact-item">
+            <div class="cv-contact-icon">🔗</div>
+            <a href="https://www.linkedin.com/in/sebastião-miranda" target="_blank"
+               style="color:var(--gold-light);text-decoration:none;font-size:0.78rem;">LinkedIn Profile</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-block">
+        <div class="cv-block-title">Habilidades Técnicas</div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Laravel</span><span>85%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85%" style="width:0%"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Angular</span><span>80%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80%" style="width:0%"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>PHP</span><span>85%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85%" style="width:0%"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>JavaScript</span><span>78%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="78%" style="width:0%"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Python</span><span>70%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="70%" style="width:0%"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>C#</span><span>65%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="65%" style="width:0%"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>SQL</span><span>80%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80%" style="width:0%"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Power BI</span><span>72%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="72%" style="width:0%"></div></div>
+        </div>
+      </div>
+
+      <div class="cv-block">
+        <div class="cv-block-title">Idiomas</div>
+        <span class="lang-badge">🇦🇴 Português — Nativo</span>
+        <span class="lang-badge">🇬🇧 Inglês — Iniciante</span>
+      </div>
+
+      <div class="cv-block">
+        <div class="cv-block-title">Cursos Profissionais</div>
+        <div style="margin-bottom:0.8rem;">
+          <div style="font-size:0.85rem;font-weight:500;color:var(--text);">Curso de Angular</div>
+          <div style="font-size:0.75rem;color:var(--text-muted);">Centro de Formação CefItel</div>
+        </div>
+        <div style="margin-bottom:0.8rem;">
+          <div style="font-size:0.85rem;font-weight:500;color:var(--text);">Curso Básico de Power BI</div>
+          <div style="font-size:0.75rem;color:var(--text-muted);">Consultoria Elprime Solution</div>
+        </div>
+        <div>
+          <div style="font-size:0.85rem;font-weight:500;color:var(--text);">HTML, JavaScript e PHP</div>
+          <div style="font-size:0.75rem;color:var(--text-muted);">Centro de Formação CefItel</div>
+        </div>
+      </div>
+
+      <a href="#" class="cv-download-btn" onclick="window.print();return false;">
+        ⬇ Descarregar CV
+      </a>
+    </div>
+
+    <!-- MAIN COLUMN -->
+    <div class="cv-main">
+      <div class="cv-exp-section">
+        <div class="cv-exp-title">Experiências Profissionais</div>
+
+        <div class="cv-exp-item">
+          <div class="cv-exp-header">
+            <div class="cv-exp-role">Director do DTIC</div>
+            <span class="cv-exp-date">2026 — Presente</span>
+          </div>
+          <div class="cv-exp-company">Instituto Superior Politécnico Katangoji</div>
+          <ul class="cv-exp-duties">
+            <li>Definir e implementar a estratégia tecnológica alinhada com os objectivos da instituição</li>
+            <li>Elaborar o plano director de TIC a médio e longo prazo</li>
+            <li>Identificar tendências tecnológicas e oportunidades de inovação para o ISPK</li>
+            <li>Liderar, coordenar e avaliar a equipa técnica do departamento</li>
+            <li>Assegurar o funcionamento dos sistemas administrativos (matrículas, notas, gestão académica)</li>
+            <li>Colaborar com os departamentos académicos na integração de tecnologia no ensino</li>
+          </ul>
+        </div>
+
+        <div class="cv-exp-item">
+          <div class="cv-exp-header">
+            <div class="cv-exp-role">Subdirector Pedagógico</div>
+            <span class="cv-exp-date">2024 — 2026</span>
+          </div>
+          <div class="cv-exp-company">Instituto Técnico Privado de Administração Pitabel Combatentes</div>
+          <ul class="cv-exp-duties">
+            <li>Elaborar e coordenar o plano pedagógico anual da instituição</li>
+            <li>Organizar os horários lectivos das turmas e dos professores</li>
+            <li>Supervisionar as aulas dos professores através de visitas pedagógicas</li>
+            <li>Implementar estratégias pedagógicas para reduzir o insucesso escolar</li>
+            <li>Garantir o equilíbrio entre a componente teórica e prática do ensino técnico</li>
+          </ul>
+        </div>
+
+        <div class="cv-exp-item">
+          <div class="cv-exp-header">
+            <div class="cv-exp-role">Analista de Sistema & Programador</div>
+            <span class="cv-exp-date">2019 — 2024</span>
+          </div>
+          <div class="cv-exp-company">Elprime Solution</div>
+          <ul class="cv-exp-duties">
+            <li>Reunir com clientes para identificar necessidades e documentar requisitos funcionais</li>
+            <li>Criar diagramas de fluxo, casos de uso e modelos de dados (UML, BPMN)</li>
+            <li>Desenhar a arquitectura lógica dos sistemas e aplicações</li>
+            <li>Desenvolver e consumir APIs e serviços web para integração entre sistemas</li>
+            <li>Escrever código limpo, eficiente e bem documentado em linguagens adequadas</li>
+            <li>Elaborar documentação técnica e manuais de utilizador</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cv-exp-section">
+        <div class="cv-exp-title">Educação</div>
+        <div class="cv-edu-item">
+          <div class="cv-edu-icon">🎓</div>
+          <div>
+            <div class="cv-edu-degree">Licenciado em Engenharia Informática</div>
+            <div class="cv-edu-school">Universidade Metodista de Angola</div>
+            <div class="cv-edu-year">2016 — 2022</div>
+          </div>
+        </div>
+        <div class="cv-edu-item">
+          <div class="cv-edu-icon">📚</div>
+          <div>
+            <div class="cv-edu-degree">Técnico Médio de Informática de Gestão</div>
+            <div class="cv-edu-school">Instituto Médio de Gestão e Administração de Viana</div>
+            <div class="cv-edu-year">2010 — 2012</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- pages/chat.html -->
+<section id="chat">
+  <div class="chat-container">
+    <div class="section-label" data-i18n="chat_label">Conversa</div>
+    <h2 class="section-title" data-i18n="chat_title">Fale <span>Comigo</span></h2>
+    <div class="section-sep"></div>
+    <div class="chat-window">
+      <div class="chat-header">
+        <div class="chat-avatar">S</div>
+        <div>
+          <div style="font-size:0.88rem;font-weight:600;" data-i18n="chat_name">Sebastião Miranda</div>
+          <div class="chat-status" data-i18n="chat_status">● Online agora</div>
+        </div>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="msg bot">
+          <div class="msg-avatar">S</div>
+          <div class="msg-bubble" data-i18n="chat_welcome">
+            Olá! 👋 Bem-vindo ao meu portfólio. Sou Sebastião Miranda, Engenheiro Informático. Como posso ajudá-lo hoje?
+          </div>
+        </div>
+      </div>
+      <div class="chat-input-wrap">
+        <input type="text" class="chat-input" id="chatInput"
+          placeholder="Escreva uma mensagem..."
+          data-i18n-placeholder="chat_placeholder"
+          onkeypress="chatKeyPress(event)"/>
+        <button class="chat-send" onclick="sendChatMessage()">➤</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- pages/contato.html -->
+<section id="contato">
+  <div class="section-label" data-i18n="form_section_label">Contacto</div>
+  <h2 class="section-title" data-i18n="form_section_title">Entre em <span>Contacto</span></h2>
+  <div class="section-sep"></div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3 data-i18n="form_info_title">Vamos Trabalhar<br>Juntos</h3>
+      <p data-i18n="form_info_desc">Preencha o formulário com os seus dados para que eu possa entrar em contacto consigo o mais brevemente possível.</p>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📍</div>
+        <span>Luanda, Angola</span>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📧</div>
+        <span>sebastiaodacruzmiranda@gmail.com</span>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📱</div>
+        <span>+244 935 457 261</span>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">🔗</div>
+        <a href="https://www.linkedin.com/in/sebastião-miranda" target="_blank"
+           style="color:var(--text-muted);text-decoration:none;">linkedin.com/in/sebastião-miranda</a>
+      </div>
+    </div>
+    <div class="form-card">
+      <div class="form-title" data-i18n="form_title">Formulário de Contacto</div>
+      <div class="form-group">
+        <label class="form-label" data-i18n="form_bi_label">Número do Bilhete de Identidade <span class="req">*</span></label>
+        <div class="bi-validation">
+          <input type="text" class="form-input" id="biNumber" placeholder="000000000LA000" maxlength="14" oninput="onBIInput(this)" style="text-transform:uppercase;letter-spacing:0.04em;"/>
+        </div>
+        <div class="form-hint" id="biHint"></div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-i18n="form_nome">Nome Completo <span class="req">*</span></label>
+        <input type="text" class="form-input" id="fullName" placeholder="Insira o seu nome completo"/>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" data-i18n="form_email">Endereço de E-mail <span class="req">*</span></label>
+        <input type="email" class="form-input" id="emailInput" placeholder="exemplo@dominio.com"
+          oninput="onEmailInput(this)" onblur="validateEmail(this)"/>
+        <div class="form-hint" id="emailHint"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" data-i18n="form_tel">Telefone</label>
+          <input type="tel" class="form-input" id="phone" placeholder="+244 9XX XXX XXX"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="form_assunto">Assunto</label>
+          <input type="text" class="form-input" id="subject" placeholder="Ex: Proposta de projecto"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-i18n="form_msg">Mensagem <span class="req">*</span></label>
+        <textarea class="form-input" id="message" rows="4"
+          placeholder="Descreva o seu projecto ou pedido..." style="resize:vertical;"></textarea>
+      </div>
+      <button class="form-submit" onclick="submitForm()" data-i18n="form_submit">Enviar Mensagem</button>
+      <div id="formSuccess" style="display:none;text-align:center;padding:1rem;color:#4ade80;font-size:0.9rem;" data-i18n="form_success">
+        ✓ Mensagem enviada com sucesso! Entrarei em contacto brevemente.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MAPA DE LOCALIZAÇÃO ── -->
+<section id="localizacao" style="padding:4rem 2rem;background:var(--bg,#0d0d0d);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="section-label" style="text-align:center;">Localização</div>
+    <h2 class="section-title" style="text-align:center;margin-bottom:0.5rem;">Onde me <span>Encontrar</span></h2>
+    <div class="section-sep" style="margin:0 auto 1.5rem;"></div>
+    <p style="text-align:center;color:var(--text-muted,#aaa);margin-bottom:2rem;font-size:0.92rem;">
+      📍 Cacuaco Vila, Luanda, Angola
+    </p>
+    <div style="border-radius:16px;overflow:hidden;border:1px solid rgba(212,168,67,0.25);box-shadow:0 8px 40px rgba(0,0,0,0.45);position:relative;">
+      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-120%);z-index:999;pointer-events:none;text-align:center;">
+        <div style="background:var(--gold-light,#d4a843);color:#000;font-size:0.72rem;font-weight:700;padding:5px 10px;border-radius:20px;white-space:nowrap;box-shadow:0 2px 12px rgba(212,168,67,0.6);">
+          📍 Sebastião Miranda · Cacuaco Vila
+        </div>
+        <div style="width:2px;height:16px;background:var(--gold-light,#d4a843);margin:0 auto;box-shadow:0 0 6px rgba(212,168,67,0.8);"></div>
+      </div>
+      <iframe
+        src="https://www.openstreetmap.org/export/embed.html?bbox=13.34,8.72,13.43,8.79&layer=mapnik&marker=8.752,13.385"
+        width="100%"
+        height="380"
+        style="border:0;display:block;filter:invert(0.88) hue-rotate(180deg) saturate(0.7) brightness(0.85);"
+        allowfullscreen=""
+        loading="lazy"
+        title="Localização: Cacuaco Vila, Luanda, Angola">
+      </iframe>
+    </div>
+    <div style="text-align:center;margin-top:1rem;">
+      <a href="https://www.openstreetmap.org/?mlat=8.752&mlon=13.385#map=14/8.752/13.385"
+         target="_blank"
+         style="color:var(--gold-light,#d4a843);font-size:0.8rem;text-decoration:none;opacity:0.8;">
+        🗺️ Abrir no OpenStreetMap →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">PORTFOLIO·ENG. SEBASTIÃO MIRANDA</div>
+  <div class="footer-copy" data-i18n="footer_copy">© 2025 Sebastião da Cruz Miranda. Todos os direitos reservados. · Luanda, Angola</div>
+</footer>
+
+
+<script>
+/* ── VALIDAÇÃO DO BI ANGOLANO ──────────────────────────────────────
+   Formato oficial: NNNNNNNNNPPYYY
+   - 9 dígitos (número sequencial)
+   - 2 letras (código da província emissora)
+   - 3 dígitos (dígitos de controlo / série)
+   O nome da pessoa NÃO está codificado no número do BI.
+   ------------------------------------------------------------------ */
+const BI_PROVINCIAS = {
+  LA: 'Luanda',      BE: 'Benguela',    HU: 'Huambo',
+  BI: 'Bié',         ML: 'Malanje',     LN: 'Lunda Norte',
+  LS: 'Lunda Sul',   MX: 'Moxico',      CN: 'Cunene',
+  HN: 'Huíla',       KU: 'Kuando Kubango', CC: 'Cuanza Norte',
+  CS: 'Cuanza Sul',  CB: 'Cabinda',     ZA: 'Zaire',
+  UA: 'Uíge',        BG: 'Bengo',       KN: 'Cuando Cubango',
+  NA: 'Namibe',      NT: 'Noroeste',
+};
+
+function onBIInput(el) {
+  el.value = el.value.toUpperCase().replace(/[^0-9A-Z]/g, '');
+  document.getElementById('biHint').textContent = '';
+  document.getElementById('provincia').value = '';
+}
+
+function validateBI() {
+  const raw   = document.getElementById('biNumber').value.trim().toUpperCase();
+  const hint  = document.getElementById('biHint');
+  const provEl = document.getElementById('provincia');
+
+  // Formato: 9 dígitos + 2 letras + 3 dígitos = 14 caracteres
+  const regex = /^(\d{9})([A-Z]{2})(\d{3})$/;
+  const match = raw.match(regex);
+
+  if (!match) {
+    hint.style.color = '#f87171';
+    hint.textContent = '✗ Formato inválido. Use o formato: 000000000LA000 (9 dígitos + 2 letras + 3 dígitos)';
+    provEl.value = '';
+    return;
+  }
+
+  const seq     = match[1];
+  const provCode = match[2];
+  const serie   = match[3];
+
+  // Verificar se todos os dígitos são zero (inválido)
+  if (parseInt(seq) === 0) {
+    hint.style.color = '#f87171';
+    hint.textContent = '✗ Número de BI inválido.';
+    provEl.value = '';
+    return;
+  }
+
+  const provincia = BI_PROVINCIAS[provCode];
+  if (!provincia) {
+    hint.style.color = '#fbbf24';
+    hint.textContent = '⚠ Código de província "' + provCode + '" não reconhecido. Verifique o BI.';
+    provEl.value = provCode;
+    return;
+  }
+
+  // Tudo válido
+  hint.style.color = '#4ade80';
+  hint.textContent = '✓ BI válido — Província emissora: ' + provincia + ' (' + provCode + ')';
+  provEl.value = provincia;
+
+  // Focar no campo do nome para o utilizador preencher
+  const nameEl = document.getElementById('fullName');
+  if (!nameEl.value) {
+    nameEl.focus();
+  }
+}
+</script>
+
+<script src="js/main.js"></script>
+</body>
+</html>
