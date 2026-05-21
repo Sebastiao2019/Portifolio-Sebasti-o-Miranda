@@ -1,0 +1,32 @@
+<!-- ── CHAT ── -->
+<section id="chat">
+  <div class="chat-container">
+    <div class="section-label" data-i18n="chat_label">Conversa</div>
+    <h2 class="section-title" data-i18n="chat_title">Fale <span>Comigo</span></h2>
+    <div class="section-sep"></div>
+    <div class="chat-window">
+      <div class="chat-header">
+        <div class="chat-avatar">S</div>
+        <div>
+          <div style="font-size:0.88rem;font-weight:600;" data-i18n="chat_name">Sebastião Miranda</div>
+          <div class="chat-status" data-i18n="chat_status">● Online agora</div>
+        </div>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="msg bot">
+          <div class="msg-avatar">S</div>
+          <div class="msg-bubble" data-i18n="chat_welcome">
+            Olá! 👋 Bem-vindo ao meu portfólio. Sou Sebastião Miranda, Engenheiro Informático. Como posso ajudá-lo hoje?
+          </div>
+        </div>
+      </div>
+      <div class="chat-input-wrap">
+        <input type="text" class="chat-input" id="chatInput"
+          placeholder="Escreva uma mensagem..."
+          data-i18n-placeholder="chat_placeholder"
+          onkeypress="chatKeyPress(event)"/>
+        <button class="chat-send" onclick="sendChatMessage()">➤</button>
+      </div>
+    </div>
+  </div>
+</section>

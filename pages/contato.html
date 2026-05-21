@@ -1,0 +1,106 @@
+<!-- ── CONTACT / FORM ── -->
+<section id="contato">
+  <div class="section-label" data-i18n="form_section_label">Contacto</div>
+  <h2 class="section-title" data-i18n="form_section_title">Entre em <span>Contacto</span></h2>
+  <div class="section-sep"></div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3 data-i18n="form_info_title">Vamos Trabalhar<br>Juntos</h3>
+      <p data-i18n="form_info_desc">Preencha o formulário com os seus dados para que eu possa entrar em contacto consigo o mais brevemente possível.</p>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📍</div>
+        <span>Luanda, Angola</span>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📧</div>
+        <span>sebastiaodacruzmiranda@gmail.com</span>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📱</div>
+        <span>+244 935 457 261</span>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">🔗</div>
+        <a href="https://www.linkedin.com/in/sebastião-miranda" target="_blank"
+           style="color:var(--text-muted);text-decoration:none;">linkedin.com/in/sebastião-miranda</a>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <div class="form-card">
+      <div class="form-title" data-i18n="form_title">Formulário de Contacto</div>
+
+      <!-- BI Number -->
+      <div class="form-group">
+        <label class="form-label" data-i18n="form_bi_label">
+          Número do Bilhete de Identidade <span class="req">*</span>
+        </label>
+        <div class="bi-validation">
+          <input type="text" class="form-input" id="biNumber"
+            placeholder="000000000LA000" maxlength="14" oninput="onBIInput(this)"/>
+          <button class="bi-check-btn" onclick="validateBI()" data-i18n="form_bi_btn">Validar BI</button>
+        </div>
+        <div class="form-hint" id="biHint"></div>
+      </div>
+
+      <!-- Auto-filled fields -->
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" data-i18n="form_nome">Nome Completo <span class="req">*</span></label>
+          <input type="text" class="form-input" id="fullName" readonly placeholder="Preenchido automaticamente"/>
+          <div class="form-hint" id="nameHint"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="form_dob">Data de Nascimento</label>
+          <input type="text" class="form-input" id="dob" readonly placeholder="Preenchido automaticamente"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" data-i18n="form_provincia">Província</label>
+          <input type="text" class="form-input" id="provincia" readonly placeholder="Preenchido automaticamente"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="form_naturalidade">Naturalidade</label>
+          <input type="text" class="form-input" id="naturalidade" readonly placeholder="Preenchido automaticamente"/>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label class="form-label" data-i18n="form_email">Endereço de E-mail <span class="req">*</span></label>
+        <input type="email" class="form-input" id="emailInput"
+          placeholder="exemplo@dominio.com"
+          oninput="onEmailInput(this)" onblur="validateEmail(this)"/>
+        <div class="form-hint" id="emailHint"></div>
+      </div>
+
+      <!-- Phone & Subject -->
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" data-i18n="form_tel">Telefone</label>
+          <input type="tel" class="form-input" id="phone" placeholder="+244 9XX XXX XXX"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="form_assunto">Assunto</label>
+          <input type="text" class="form-input" id="subject" placeholder="Ex: Proposta de projecto"/>
+        </div>
+      </div>
+
+      <!-- Message -->
+      <div class="form-group">
+        <label class="form-label" data-i18n="form_msg">Mensagem <span class="req">*</span></label>
+        <textarea class="form-input" id="message" rows="4"
+          placeholder="Descreva o seu projecto ou pedido..."
+          style="resize:vertical;"></textarea>
+      </div>
+
+      <button class="form-submit" onclick="submitForm()" data-i18n="form_submit">Enviar Mensagem</button>
+      <div id="formSuccess"
+        style="display:none;text-align:center;padding:1rem;color:#4ade80;font-size:0.9rem;"
+        data-i18n="form_success">
+        ✓ Mensagem enviada com sucesso! Entrarei em contacto brevemente.
+      </div>
+    </div>
+  </div>
+</section>

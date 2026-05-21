@@ -1,0 +1,157 @@
+<!-- ── HERO ── -->
+<style>
+/* ── Hero Slideshow ── */
+.hero-slideshow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+.hero-slideshow .slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center top;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+.hero-slideshow .slide.active {
+  opacity: 1;
+}
+/* Dark overlay so text stays readable */
+.hero-slideshow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.72) 0%,
+    rgba(0,0,0,0.45) 55%,
+    rgba(0,0,0,0.25) 100%
+  );
+  z-index: 1;
+}
+/* Slide indicators */
+.hero-dots {
+  position: absolute;
+  bottom: 1.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;
+}
+.hero-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+  border: none;
+  padding: 0;
+}
+.hero-dot.active {
+  background: var(--gold-light, #d4a843);
+  transform: scale(1.3);
+}
+/* Arrows */
+.hero-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  backdrop-filter: blur(4px);
+  transition: background 0.2s;
+}
+.hero-arrow:hover { background: rgba(255,255,255,0.22); }
+.hero-arrow.prev { left: 1rem; }
+.hero-arrow.next { right: 1rem; }
+/* Make hero-content sit above the slideshow */
+#inicio { position: relative; overflow: hidden; }
+#inicio .hero-bg { display: none; }
+#inicio .hero-content { position: relative; z-index: 5; }
+#inicio .hero-lines { z-index: 2; }
+</style>
+
+<section id="inicio">
+  <!-- Slideshow background -->
+  <div class="hero-slideshow" id="heroSlideshow">
+    <div class="slide active" style="background-image: url('images/perfil.jpeg');"></div>
+    <div class="slide" style="background-image: url('images/img2.jpeg'); background-position: center center;"></div>
+    <div class="slide" style="background-image: url('images/img3.jpeg');"></div>
+    <div class="slide" style="background-image: url('images/img4.jpeg');"></div>
+    <div class="slide" style="background-image: url('images/img1.png'); background-position: center top;"></div>
+  </div>
+
+  <!-- Nav arrows -->
+  <button class="hero-arrow prev" onclick="heroSlide(-1)">&#8249;</button>
+  <button class="hero-arrow next" onclick="heroSlide(1)">&#8250;</button>
+
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+
+  <div class="hero-content">
+    <div class="ao-flag-accent"><span class="ao-red"></span><span class="ao-black"></span></div>
+    <div class="hero-tag" data-i18n="hero_tag">Engenheiro Informático · Sebastião da Cruz Miranda</div>
+    <h1 class="hero-name" data-i18n="hero_name">Sebastião <span>Miranda</span></h1>
+    <p class="hero-subtitle" data-i18n="hero_subtitle">
+      Engenheiro de Informático & Analista de Software e Analista de Dados, Programador.
+      Transformando visões em experiências digitais excepcionais.
+    </p>
+    <div class="hero-cta">
+      <a href="#projectos" class="btn-primary" data-i18n="hero_cta1">Ver Projectos</a>
+      <a href="#contato" class="btn-outline" data-i18n="hero_cta2">Contactar</a>
+    </div>
+  </div>
+
+  <!-- Dot indicators -->
+  <div class="hero-dots" id="heroDots">
+    <button class="hero-dot active" onclick="heroGoTo(0)"></button>
+    <button class="hero-dot" onclick="heroGoTo(1)"></button>
+    <button class="hero-dot" onclick="heroGoTo(2)"></button>
+    <button class="hero-dot" onclick="heroGoTo(3)"></button>
+    <button class="hero-dot" onclick="heroGoTo(4)"></button>
+  </div>
+</section>
+
+<script>
+(function() {
+  let current = 0;
+  const slides = document.querySelectorAll('#heroSlideshow .slide');
+  const dots   = document.querySelectorAll('#heroDots .hero-dot');
+  let timer    = null;
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  function next() { goTo(current + 1); }
+
+  function startAuto() {
+    clearInterval(timer);
+    timer = setInterval(next, 4500);
+  }
+
+  // Expose to inline onclick
+  window.heroSlide  = function(dir) { goTo(current + dir); startAuto(); };
+  window.heroGoTo   = function(n)   { goTo(n); startAuto(); };
+
+  startAuto();
+})();
+</script>
